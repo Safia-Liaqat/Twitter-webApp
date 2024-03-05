@@ -1,0 +1,35 @@
+.login{
+   
+}
+
+.login_form{
+    display: flex;
+    flex-direction: column;
+}
+
+.login_form input{
+    height: 50px;
+}
+
+.input-field{
+    margin: 10px 0px;
+    padding: 2px 5px;
+}
+
+.login_form .input-btn{
+    font-size: 15px;
+    background-color: #3498db;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+}
+
+.login p{
+    text-align: center;
+}
+
+.error-message {
+    color: #ff0000; /* Red color */
+    font-size: 14px;
+    margin-top: 5px;
+  }

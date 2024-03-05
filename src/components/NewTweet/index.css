@@ -1,0 +1,25 @@
+.tweet{
+    border: 1px solid rgb(155, 151, 151);
+    padding: 20px;
+    margin: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.tweet input{
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.tweet textarea{
+ padding: 10px;
+ margin: 10px 0;
+}
+
+.tweet .btn{
+    background-color: #3498db;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}

@@ -1,0 +1,38 @@
+.profile .profile-cover{
+    height: 220px;
+    background-color: #95a5a6;
+}
+
+.profile-basics {
+ display: flex;
+}
+
+.profie-image{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  background-color: black;
+  margin-top: -8px;
+  border: 1px solid white;
+}
+
+.profile-basics-details{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.profile-stats{
+    display: flex;
+}
+
+.profile-stats > div {
+ margin: 20px;
+}
+
+.btn-follow{
+    margin-left: 40px;
+    border: 1px solid #2a2a2a;
+    align-self: center;
+    padding: 5px 15px;
+    transition: 0.2s;
+}

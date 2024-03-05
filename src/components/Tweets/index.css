@@ -1,0 +1,27 @@
+.tweet{
+    border: 1px solid rgb(155, 151, 151);
+    padding: 20px;
+    margin: 40px;
+}
+
+.tweet h2{
+    margin-bottom: 20px;
+}
+
+.tweet-body{
+ margin-bottom: 20px;
+
+}
+
+.divider{
+    height:2px;
+    width: 100%;
+    background-color: rgb(196, 193, 193);
+    margin-bottom: 10px;
+}
+
+.tweet-stats{
+    display: flex;
+    justify-content: space-between;
+    color: rgb(135, 129, 129);
+}

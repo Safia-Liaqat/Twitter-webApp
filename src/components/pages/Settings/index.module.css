@@ -1,0 +1,71 @@
+.container{
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container h2{
+    font-weight:900;
+    font-size: 30px;
+}
+
+.update_pass{
+margin-top: 40px;
+}
+.container form{
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    
+}
+
+.container input{
+    padding: 10px;
+    margin: 10px;
+}
+
+.container  textarea{
+    padding: 10px;
+    margin: 10px;
+}
+.container h2{
+    margin: 20px 0;
+}
+
+.btn{
+    font-size: 15px;
+    background-color: #3498db;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    padding: 2px;
+}
+
+.btn_deny{
+    font-size: 15px;
+    background-color: #c0392b;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    padding: 2px;
+    width: 40%;
+}
+
+.btn_accept{
+    font-size: 15px;
+    background-color: #27ae60;
+    border: none;
+    outline: none;
+    margin-top: 15px;
+    padding: 2px;
+    width: 40%;  
+}
+
+.update_btn{
+    display: flex;
+    justify-content: space-between;
+    
+}
