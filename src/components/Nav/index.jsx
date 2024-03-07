@@ -13,17 +13,17 @@ const Nav = () => {
     },
     {
       placeholder:"Settings",
-      path:"/settings",
+      path:"/setting",
       isLink:true
     },
     {
       placeholder:"Followers",
-      path:"/followers",
+      path:"/home/followers",
       isLink:true
     },
     {
       placeholder:"Followings",
-      path:"/followings",
+      path:"/home/followings",
       isLink:true
     },
     {

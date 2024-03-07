@@ -23,9 +23,7 @@ const Home = () => {
 
   const params=useParams()
   const {paramId}=params
-  
-  console.log(paramId)
-  
+   
  const router=useNavigate()
 
  useEffect(() => {
@@ -81,6 +79,7 @@ const Home = () => {
       }
     })
   },[userId])
+  
  const sendNewTweet=(e)=>{
   e.preventDefault()
   if(!newTweetTitle.trim() || !newTweetDesc.trim()){
@@ -111,7 +110,7 @@ const Home = () => {
       <> 
       <Nav/>
      <div className='container'>
-        <Profile isUserOnHome={IsUserOnHome} info={userData} userProfileId={userId}/>
+        <Profile isUserOnHome={IsUserOnHome} info={userData}  paramId={paramId}/>
        {IsUserOnHome &&  (
        <NewTweet sendNewTweet={sendNewTweet} title={newTweetTitle} setTitle={setNewTweetTitle} desc={newTweetDesc} setDesc={setNewTweetDescr}/>  
       ) }
