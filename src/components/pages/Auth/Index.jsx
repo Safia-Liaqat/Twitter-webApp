@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Login from '../../Login/Index'
 import Register from '../../Register/Index'
-import './index.css'
+import './Index.css'
 import {onAuthStateChanged} from 'firebase/auth'
 import { auth } from '../../../firebase'
 import { useNavigate } from 'react-router-dom'
