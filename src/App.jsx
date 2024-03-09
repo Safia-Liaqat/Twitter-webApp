@@ -7,6 +7,7 @@ import Settings from './components/pages/Settings'
 import Followers from './components/pages/Followers'
 import { Route, Routes } from 'react-router-dom'
 import Followings from './components/pages/Following'
+import FindFollowers from "./components/pages/FindFollowers";
 
 function App() {
   /*
@@ -55,6 +56,7 @@ const counterRedux = useSelector((state) => state.counter);
           <Route path=":paramId" element={<Home />} />
           <Route path="followings" element={<Followings />} />
           <Route path="followers" element={<Followers />} />
+          <Route path="findFollowers" element={<FindFollowers/>} />
         </Route>
         <Route path="/setting" element={<Settings />} />
       </Routes>

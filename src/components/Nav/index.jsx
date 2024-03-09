@@ -27,6 +27,11 @@ const Nav = () => {
       isLink:true
     },
     {
+      placeholder:"Find Followers",
+      path:"/home/findFollowers",
+      isLink:true 
+    },
+    {
       placeholder:"Sign out",
       path:"/auth",
       isLink:false

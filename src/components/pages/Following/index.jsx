@@ -4,24 +4,24 @@ import Nav from '../../Nav'
 const Followings = () => {
     const following=[
         {
-            name:'Safia Liaqat',
-            handler:"@Safia"
+            name:'Andrew',
+            handler:"@Andrew"
         },
         {
-            name:'Ahmad Hassan',
-            handler:"@Ahmad"
+            name:'Andrew',
+            handler:"@Andrew"
         },
         {
-            name:'Saba Liaqat',
-            handler:"@Saba"
+            name:'Andrew',
+            handler:"@Andrew"
         },
         {
-            name:'Rafia Liaqat',
-            handler:"@Rafia"
+            name:'Andrew',
+            handler:"@Andrew"
         },
         {
-            name:'Hussain Muhayudin',
-            handler:"@Husaain"
+            name:'Andrew',
+            handler:"Andrew"
         }
     ]
   return (
