@@ -48,21 +48,38 @@ const Profile = ({ info, isUseronHome, paramId }) => {
       try {
         const db = getDatabase();
         const userRef = ref(db, `users/${paramId}`);
-        onValue(userRef, (snapshot) => {
-          const data = snapshot.val();
-
-          if (data) {
-            console.log(data);
-          } else {
-            console.error('User not found');
+        
+        // Use Promise to wait for both fetching data and checking followers
+        const [snapshot] = await Promise.all([
+          new Promise((resolve) => onValue(userRef, resolve)),
+          // Add any other asynchronous operations if needed
+        ]);
+  
+        const data = snapshot.val();
+  
+        if (data) {
+          console.log(data);
+  
+          // Update the followers state with the data from the database
+          if (data.followers) {
+            const followerValues = Object.values(data.followers);
+            const isId = followerValues.some((item) => item.userfollower === userprofileId);
+  
+            if (isId) {
+              setIsFollowing(true);
+            }
           }
-        });
+        } else {
+          console.error('User not found');
+        }
       } catch (error) {
         console.error('Error fetching user details', error);
       }
     };
+  
     fetchUserDetails();
-  }, [paramId]);
+  }, [paramId, userprofileId]);
+  
 
   useEffect(() => {
     // Fetch user details based on paramId
@@ -74,15 +91,17 @@ const Profile = ({ info, isUseronHome, paramId }) => {
           const data = snapshot.val();
 
           if (data) {
-            console.log(data);
+       //     console.log(data);
             // Update the followers state with the data from the database
             if (data.followers) {
               const followerValues = Object.values(data.followers);
               const isId=followerValues.some(item => item.userfollower === userprofileId)
               if (isId) {
-                setIsFollowing(false)
-                console.log('isFollowing',isFollowing)
+                setIsFollowing(true)
+              
               } 
+               console.log('isFollowing in dataFetching',isFollowing)
+            //  else{setIsFollowing(false)}
               //setFollowers(followerValues);
             }
           } else {
@@ -94,17 +113,20 @@ const Profile = ({ info, isUseronHome, paramId }) => {
       }
     };
     fetchUserDetails();
-  }, [paramId]);
+  }, [paramId, isFollowing]);
   
   
-
+/*
   const followHandler =async () => {
+    setIsFollowing(true);
+    console.log("is following on button click",isFollowing)
     const db = getDatabase();
-    if (!isFollowing) {
+    
       const followerRef = ref(db, `users/${paramId}/followers`);
       const followingRef = ref(db, `users/${userprofileId}/followings`);
       const newFollowingRef = push(followingRef);
       const newFollowerRef = push(followerRef);
+      
       set(newFollowerRef, {
         userfollower: userprofileId,
       });
@@ -112,10 +134,35 @@ const Profile = ({ info, isUseronHome, paramId }) => {
         userfollowing: paramId,
       });
       console.log('user added');   
-    }
-    setIsFollowing(true);
-    console.log("is following",isFollowing)  
+      
   };
+*/
+const followHandler = async () => {
+  const db = getDatabase();
+
+  try {
+    const followerRef = ref(db, `users/${paramId}/followers`);
+    const followingRef = ref(db, `users/${userprofileId}/followings`);
+    const newFollowingRef = push(followingRef);
+    const newFollowerRef = push(followerRef);
+
+    // Wait for the database operations to complete
+    await Promise.all([
+      set(newFollowerRef, { userfollower: userprofileId }),
+      set(newFollowingRef, { userfollowing: paramId }),
+    ]);
+
+    // After the database operations are completed, update the state
+    setIsFollowing(true);
+    console.log('User added to followers and followings');
+  } catch (error) {
+    console.error('Error adding user to followers and followings', error);
+  }
+};
+
+  useEffect(() => {
+    console.log("is following in useEffect", isFollowing);
+  }, [isFollowing]);
 
   return (
     <div className='profile'>
