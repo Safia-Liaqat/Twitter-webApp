@@ -36,6 +36,10 @@ const Profile = ({ info, isUseronHome, paramId }) => {
     setFollowingModalShow(true);
   };
 
+  const handleCloseFollowingModal = () => {
+    setFollowingModalShow(false);
+  };
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -224,7 +228,7 @@ const followHandler = async () => {
       />
       <FollowingModal 
         show={followingModalShow}
-        onHide={() => setModalShow(false)}
+        onHide={() => handleCloseFollowingModal(false)}
       />
      
       {/* Render the modal component */}
