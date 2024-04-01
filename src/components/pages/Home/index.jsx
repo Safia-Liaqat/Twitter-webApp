@@ -22,17 +22,14 @@ const Home = () => {
   const [IsUserOnHome,setIsUseronHome]=useState(true)
 
   const params=useParams()
-  const {paramId}=params
-   
- const router=useNavigate()
+  const {paramId}=params   
+   const router=useNavigate()
 
  useEffect(() => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
-
       setLoggedIn(true);
-
       if (paramId && paramId !== uid) {
         setIsUseronHome(false);
       }
@@ -51,8 +48,6 @@ const Home = () => {
         });
       } else {
         setUserID(uid);
-       // console.log('home')
-       // console.log(userId)
       }
     } else {
       router("/");
@@ -98,7 +93,6 @@ const Home = () => {
   toast.success("New Tweet Created");
   setNewTweetTitle("")
   setNewTweetDescr("")
-
 
  }
   return (

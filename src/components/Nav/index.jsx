@@ -48,7 +48,7 @@ const Nav = () => {
   }
   return (
     <nav>
-        <h3 className='logo'>Edverser</h3>
+        <h3 className='logo'>ChirpHub</h3>
     <ul>
     {navLinks.map((navlink, index) => (
           <li  key={index}>

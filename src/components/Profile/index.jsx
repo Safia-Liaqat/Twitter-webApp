@@ -4,6 +4,10 @@ import { useParams } from 'react-router-dom';
 import { getDatabase, onValue, push, ref, set } from 'firebase/database';
 import {onAuthStateChanged} from 'firebase/auth'
 import { auth } from  '../../firebase'
+import { Button, Modal } from 'react-bootstrap';
+import MyModal from '../../Modals/FollowersModal';
+import FollowingModal from '../../Modals/FollowingModal';
+//import Example from './Example';
 
 const Profile = ({ info, isUseronHome, paramId }) => {
  // const [follower, setFollower] = useState(0);
@@ -16,6 +20,21 @@ const Profile = ({ info, isUseronHome, paramId }) => {
     followings: {},
     bio: '',
   });
+
+  const [modalShow, setModalShow] = useState(false); // State variable to control modal visibility
+  const [followingModalShow, setFollowingModalShow] = useState(false);
+  const handleOpenModal = () => {
+    setModalShow(true);
+  };
+
+  // Function to handle closing the modal
+  const handleCloseModal = () => {
+    setModalShow(false);
+  };  
+
+  const handleOpenFollowingModal = () => {
+    setFollowingModalShow(true);
+  };
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -188,15 +207,28 @@ const followHandler = async () => {
       </div>
       <div className='profile-bio'>{userInfo.bio}</div>
       <div className='profile-stats'>
-        <div>
+        <div onClick={handleOpenModal} style={{cursor:'pointer'}}>
           <h3>Followers</h3>
           <p>{Object.keys(userInfo.followers).length}</p>
         </div>
-        <div>
+        <div onClick={handleOpenFollowingModal} style={{cursor:'pointer'}}>
           <h3>Following</h3>
           <p>{Object.keys(userInfo.followings).length}</p>
         </div>
       </div>
+
+      {/* Render the modal component */}
+      <MyModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+      <FollowingModal 
+        show={followingModalShow}
+        onHide={() => setModalShow(false)}
+      />
+     
+      {/* Render the modal component */}
+      
     </div>
   );
 };

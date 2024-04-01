@@ -1,43 +1,17 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import classes from './index.module.css'
 import Nav from '../../Nav'
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../../firebase';
+import { getDatabase, onValue, ref } from 'firebase/database';
+import FollowersDetails from './followerDetails';
+
 const Followers = () => {
-    const followers=[
-        {
-            name:'Andrew',
-            handler:"@Andrew"
-        },
-        {
-            name:'Andrew',
-            handler:"@Andrew"
-        },
-        {
-            name:'Andrew',
-            handler:"@Andrew"
-        },
-        {
-            name:'Andrew',
-            handler:"@Andrew"
-        },
-        {
-            name:'Andrew',
-            handler:"Andrew"
-        }
-    ]
-  return (
-    
-    <>
-    <Nav/>
-    
-    {
-        followers.map((follower,index)=>{
-            return <div className={classes.container}>
-            <h2>{follower.name}</h2>
-            <p>{follower.handler}</p>
-        </div>
-        })
-    }
-    
+    return (
+        <>
+        <Nav />
+        
+        <FollowersDetails/>
     </>
   )
 }
