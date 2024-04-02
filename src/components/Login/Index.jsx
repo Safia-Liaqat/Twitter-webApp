@@ -59,10 +59,10 @@ function Login({switchState}) {
         {error && <p className='error-message'>{error}</p>}
             <input className='input-field' type='email' placeholder='Email' onChange={(e)=>setEmail(e.target.value)}/>
             <input className='input-field' type='password' placeholder='Password' onChange={(e)=>setPassword(e.target.value)}/>
-            <input className='input-btn' onClick={onGoogleLogin} type='button' value={'Sign In with Google'}/>
+            <input className='' onClick={onGoogleLogin} type='button' value={'Sign In with Google'}/>
             <input className='input-btn' type='submit' value={'Sign In'}/>
         </form>
-        <p onClick={switchState}>Don't have an account, Register</p>
+        <p onClick={switchState} style={{marginTop:'20px'}}>Don't have an account, <span style={{cursor:'pointer', fontWeight:'bold'}}>Register</span> </p>
     </div>
   )
 }

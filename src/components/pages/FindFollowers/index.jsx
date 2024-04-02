@@ -4,7 +4,7 @@ import { getDatabase, onValue, push, ref, set } from 'firebase/database';
 import {onAuthStateChanged} from 'firebase/auth'
 import { auth } from  '../../../firebase'
 import Nav from '../../Nav'
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const FindFollowers = () => {
     const [userData, setUserData] = useState({});
@@ -68,6 +68,8 @@ const FindFollowers = () => {
     console.log('user List',userList)
   }, [UserId]);
 
+  // This follow handler functionality is excluded for now
+  /*
   const NavigateToProfile=async (userItem)=>{
     const paramId=userItem.id
     // console.log('user Item',userItem.id)
@@ -94,23 +96,34 @@ const FindFollowers = () => {
     console.error('Error adding user to followers and followings', error);
   }
   }
+
+  */
   return (
     <div>
         <Nav/>
-
+        <div style={{textAlign:'center', marginBottom:'40px'}}>
+        <h6>Click on the User to add him as a friend</h6>
+      </div>
         {  
   Object.values(userList).map((userItem) => {
     const userIds = Object.keys(userData).find(key => userData[key] === userItem); // Get the corresponding user ID
    // setUserParamId(userId)
     return (
-      <div className='user-container' key={userIds}>
+      <>
+      <Link to={`/home/${userItem.id}`} className='navigate'>
+       <div className='user-container' key={userIds}>
+        <div >
+        <img src={userItem.photo} className='user-image'/>
+        </div>
         <div className="name-container" >
           <div className='user-name'>
-            {userItem.name}
+            <h4>{userItem.name}</h4>
           </div>
-          <div className='user-handle'>@{userItem.name}</div>
+          <div className='user-handle'>@{userItem.name.replace(/\s/g, '')}</div>
         </div>
-        <div className="follow">
+        {
+          /*
+                <div className="follow">
           {
             followingStates[userItem.id] ? <span className='following'>Following</span> : (<>
             <button className='follow-btn' onClick={() => NavigateToProfile(userItem)}>Follow</button>
@@ -118,7 +131,13 @@ const FindFollowers = () => {
           }
           
         </div>
-      </div>
+
+          */
+        }
+             </div>
+      </Link>
+      </>
+      
     );
   })    
 }

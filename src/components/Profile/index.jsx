@@ -16,6 +16,8 @@ const Profile = ({ info, isUseronHome, paramId }) => {
   const [isFollowing,setIsFollowing]=useState(false)
   const [userInfo, setUserInfo] = useState({
     name: '',
+    photo:'',
+    coverPhoto:'',
     followers: {},
     followings: {},
     bio: '',
@@ -189,9 +191,9 @@ const followHandler = async () => {
 
   return (
     <div className='profile'>
-      <div className='profile-cover'>...</div>
+      {/* <img src={userInfo.coverPhoto} className='profile-cover'/>  */}
       <div className='profile-basics'>
-        <div className='profie-image'></div>
+        <img src={userInfo.photo} className='profie-image'></img>
         <div className='profile-basics-details'>
           <h2 className='profile-name'>{userInfo.name}</h2>
           <p className='profile-handle'>@{userInfo.name}</p>

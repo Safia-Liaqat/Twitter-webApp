@@ -1,19 +1,23 @@
 .user-container{
     display: flex;
-    width: 50%;
+    width: 35%;
     margin: 0 auto;
     justify-content: space-between;
     padding: 10px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     align-items: center;
     box-shadow: -3px 3px 29px -9px rgba(0,0,0,0.75);
     -webkit-box-shadow: -3px 3px 29px -9px rgba(0,0,0,0.75);
     -moz-box-shadow: -3px 3px 29px -9px rgba(0,0,0,0.75);
 }
 
+.user-image{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
 .user-name{
-    font-weight:800;
-    font-size: 23px;
+    margin-top: 15px;
 }
 
 .user-handle{
@@ -24,4 +28,9 @@
 .follow-btn{
     padding: 10px;
     width: 80px;
+}
+
+.navigate{
+    text-decoration: none;
+    color: black;
 }

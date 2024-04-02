@@ -41,9 +41,24 @@ function Register({switchState}) {
     }
     try {
       const res=await createUserWithEmailAndPassword(auth, email,password)
+      const imagesDirectory = [
+        "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg",
+        "https://images.pexels.com/photos/428364/pexels-photo-428364.jpeg",
+        "https://images.pexels.com/photos/4412516/pexels-photo-4412516.jpeg",
+        "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+        "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg"
+      ];
+
+      const coverPhoto=[
+        "https://images.pexels.com/photos/3280216/pexels-photo-3280216.jpeg"  ,
+        "https://images.pexels.com/photos/623919/pexels-photo-623919.jpeg"
+      ]
       const db=getDatabase()
       set(ref(db, "users/" +res.user.uid),{
         name:name,
+        photo:
+        imagesDirectory[Math.floor(Math.random() * imagesDirectory.length)],
+        coverPhoto:coverPhoto[Math.floor(Math.random() * coverPhoto.length)],
         bio:"Peace over everything",
         email:email,
         followers: {},
@@ -74,7 +89,7 @@ function Register({switchState}) {
             <input className='input-field' type='password' placeholder='Confirm Password' onChange={(e)=>setConfirmPassword(e.target.value)}/>
             <input className='input-btn' type='submit' value={'Register'}/>
         </form>
-        <p onClick={switchState}>Already have a account, Login</p>
+        <p onClick={switchState} style={{marginTop:'20px'}}>Already have a account, <span style={{cursor:'pointer', fontWeight:'bold'}}>Login</span> </p>
         <ToastContainer />
     </div>
   )

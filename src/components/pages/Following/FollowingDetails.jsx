@@ -4,6 +4,7 @@ import Nav from '../../Nav';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../../../firebase';
 import { getDatabase, onValue, ref } from 'firebase/database';
+import { Link } from 'react-router-dom';
 
 const FollowingDetails = () => {
     const [userId, setUserID] = useState(null);
@@ -28,7 +29,7 @@ const FollowingDetails = () => {
                                     onValue(userRef, (snapshot) => {
                                         const userData = snapshot.val();
                                         if (userData && userData.name) {
-                                            resolve(userData.name);
+                                            resolve({ id, name: userData.name, photo:userData.photo });
                                         } else {
                                             resolve(null);
                                         }
@@ -53,15 +54,26 @@ const FollowingDetails = () => {
     }, []);
 
     return (
-        <>
-            <h1>Total Following: {followingNames.length}</h1>
-            {followingNames.map((name, index) => (
+        <div>
+            <div className={classes.followingheding}>
+            <h3 >Total Following: {followingNames.length}</h3>
+            </div>
+            {followingNames.map(({ id, name, photo }, index) => (
+                <Link to={`/home/${id}`} className={classes.link} >
                 <div className={classes.container} key={index}>
-                    <h2>{name}</h2>
-                    <p>{}</p>
+                <div>
+                    <img src={photo} alt="" className="user-image"/>
                 </div>
+                    <div className={classes.nameContainer}>
+                      <div className='user-name'>
+                      <h4 className='name'>{name}</h4>
+                      </div>
+                      <div className='user-handle'>@{name.replace(/\s/g, '')}</div>
+                    </div>
+                </div>
+                </Link>
             ))}
-        </>
+        </div>
     );
 };
 
